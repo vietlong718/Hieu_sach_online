@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: book-store-online-be
+  data:
+    mongodb:
+      uri: mongodb+srv://mongo-user:O2O0ONnVKME6Ndp4@cluster0.ipjdu.mongodb.net/?retryWrites=true&w=majority
+#      host: localhost
+#      port: 27017
+      database: book-store-database
+
+  profiles:
+    active: ${ACTIVE_PROFILE:dev}
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 15MB
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  main:
+    allow-circular-references: true
+
+jwt:
+  secret: tlcnwithtothimynhan
+
+default:
+  password: 12345678
+  token_type: "Bearer"
+  avatar: "avatar/avatar_default.png"
+  updatingInfoBook: "Đang cập nhập"
+
+paging:
+  default:
+    page: 0
+    size: 20
+
+upload:
+  url: "https://book-store-online-be.herokuapp.com/"
+  part: "/uploads/"
+
+google:
+  verifyUrl: https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=
+
+logging:
+  level:
+    org.springframework.cache: error
+  file:
+    name: logs/book-store-online-be.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  logback:
+    rollingpolicy:
+      clean-history-on-start: true
+      max-file-size: 100MB
+      max-history: 7
+
+server:
+  error:
+    include-exception: true
+    include-message: always
+  port: 8080
